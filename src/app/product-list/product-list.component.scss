@@ -1,0 +1,9 @@
+.search {
+    display: inline-grid;
+    text-align: center;
+    padding-left: calc(50vw - 150px);
+    width: 300px;
+    .proposition {
+        background-color: rgba(255, 166, 0, 0.5);
+    }
+}

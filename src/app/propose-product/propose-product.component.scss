@@ -1,0 +1,10 @@
+.product {
+    margin: 20px;
+    text-align: center;
+    .product-form {
+        display: inline-grid;
+    }
+    .submit {
+        background-color: rgba(255, 166, 0, 0.5);
+    }
+}

@@ -1,0 +1,17 @@
+<div class="search">
+    <mat-form-field>
+        <mat-label>Je cherche une location</mat-label>
+        <input matInput placeholder="Perceuse, congélateur, poussette...">
+        <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+    <button class="proposition" (click)="redirectTo()" mat-button>Je propose une location</button>
+</div>
+<div class="product-list">
+    <div *ngFor="let product of filteredProducts" class="product" (click)="redirectTo(product.id)">
+        <img/>
+        <div>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</div>

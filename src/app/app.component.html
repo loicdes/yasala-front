@@ -1,7 +1,32 @@
-<mat-toolbar color="primary">
-    <span>My App</span>
-    <span class="spacer"></span>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button>
-</mat-toolbar>
+<mat-drawer-container class="drawer-container" [hasBackdrop]="true">
+  <mat-drawer #drawer [mode]="'over'">
+    <app-sidenav [sidenav]="drawer"></app-sidenav>
+  </mat-drawer>
+  <mat-drawer-content>
+    <mat-toolbar class="header-toolbar">
+      <mat-toolbar-row>
+        <button class="menu" mat-icon-button (click)="drawer.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span class="spacer"></span>
+        <img (click)="redirectToHome()" src="../assets/images/logo.png" class="header-logo"/>
+        <span class="spacer right"></span>
+        <button class="menu" mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>person</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button (click)="onClick('A PROPOS')" mat-menu-item>A propos</button>
+          <button (click)="onClick('CONNEXION')" mat-menu-item>Connexion</button>
+          <button (click)="onClick('INSCRIPTION')" mat-menu-item>Inscription</button>
+          <button (click)="onClick('DECONNEXION')" mat-menu-item>Déconnexion</button>
+        </mat-menu>
+      </mat-toolbar-row>
+      <mat-toolbar-row>
+        <span class="sub-header">Location 100% gratuite entre particuliers en Martinique</span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <div class="main-component">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

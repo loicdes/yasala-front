@@ -1,7 +1,37 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductListComponent } from './product-list/product-list.component';
+import { ProposeProductComponent } from './propose-product/propose-product.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path:'connexion',
+    component: LoginComponent
+  },
+  {
+    path:'proposer',
+    component: ProposeProductComponent
+  },
+  {
+    path:'location',
+    component: ProductListComponent
+  },
+  {
+    path:'location/categorie/:categorie',
+    component: ProductListComponent
+  },
+  {
+    path:'location/:id',
+    component: ProductDetailsComponent
+  },
+  {
+    path:'**',
+    redirectTo: 'location',
+    pathMatch: 'full'
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

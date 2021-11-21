@@ -1,0 +1,36 @@
+<div class="product">
+    <form class="product-form" [formGroup]="productForm">
+        <span>Coordonnées de la personne à contacter</span>
+        <mat-form-field>
+            <mat-label>NOM Prénom</mat-label>
+            <input required matInput formControlName="name" placeholder="MARIE-SAINTE Philippe"/>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Numéro de téléphone</mat-label>
+            <input required matInput formControlName="tel" type="tel" placeholder="06 96 XX XX XX"/>
+        </mat-form-field>
+        <hr>
+        <span>Le matériel</span>
+        <mat-form-field>
+            <mat-label>Catégorie</mat-label>
+            <mat-select required formControlName="categorie">
+                <mat-option [value]="categorie" *ngFor="let categorie of categories">{{categorie}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Adresse</mat-label>
+            <input required matInput formControlName="address"/>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Caution</mat-label>
+            <input required matInput formControlName="caution" type="number" placeholder="50 €"/>
+        </mat-form-field>
+            <p>Photo</p>
+            <input accept=".jpg,.png,.jpeg" required  formControlName="photo" type="file"
+            (change)="selectFile($event)"/>
+            <img [src]="localCompressedURl" height="150px" width="100%">
+            <hr>
+            
+        <button mat-button class="submit">Soumettre</button>
+    </form>
+</div>

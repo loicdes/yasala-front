@@ -1,0 +1,13 @@
+.login {
+    margin: 50px;
+    text-align: center;
+    .login-form {
+        display: inline-grid;
+    }
+    .switch-form {
+        font-size: smaller;
+    }
+    .submit {
+        background-color: rgba(255, 166, 0, 0.5);
+    }
+}

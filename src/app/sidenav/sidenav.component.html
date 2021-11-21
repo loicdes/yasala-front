@@ -1,0 +1,4 @@
+<h1>Catégories</h1>
+<mat-list role="list">
+    <mat-list-item (click)="redirectTo(categorie)" *ngFor="let categorie of categories" role="listitem">{{ categorie }}</mat-list-item>
+  </mat-list>

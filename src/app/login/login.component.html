@@ -1,0 +1,23 @@
+<div class="login">
+    <h1>{{ register ? 'Inscrivez-vous' : 'Connectez-vous'}}</h1>
+    <form class="login-form" [formGroup]="loginForm">
+        <mat-form-field *ngIf="register">
+            <mat-label>NOM Prénom</mat-label>
+            <input required matInput formControlName="name" placeholder="MARIE-SAINTE Philippe"/>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Numéro de téléphone</mat-label>
+            <input required matInput formControlName="tel" type="tel" placeholder="06 96 XX XX XX"/>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Mot de passe</mat-label>
+            <input required matInput formControlName="password" type="password"/>
+        </mat-form-field>
+        <mat-form-field *ngIf="register">
+            <mat-label>Confirmer le mot de passe</mat-label>
+            <input required matInput formControlName="passwordConfirmation" type="password"/>
+        </mat-form-field>
+        <button mat-button class="submit">{{ register ? 'S\'inscrire' : 'Se connecter'}}</button>
+    </form>
+    <button class="switch-form" mat-button (click)="register=!register">{{ register ? 'Vous avez déjà un compte ? Connectez-vous' : 'Vous n\'avez pas de compte ? Inscrivez-vous'}}</button>
+</div>
