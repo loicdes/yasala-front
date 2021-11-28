@@ -10,26 +10,39 @@ import { ProductService } from '../services/product.service';
 export class ProductListComponent implements OnInit {
 
   allProducts: any[] = [];
-  filteredProducts: any[] = [];
   categorie: string;
+  cols: number;
+  filter: string = '';
   constructor(private router: Router, private route: ActivatedRoute, private productService: ProductService) { }
 
   ngOnInit(): void {
+    this.calculateCols();
+    window.addEventListener('resize', this.calculateCols);
     this.route.params.subscribe(param => {
       if (param.categorie && param.categorie !== '') {
         this.categorie = param.categorie;
         this.productService.getAllProductsByCategory(this.categorie).subscribe((res) => {
           this.allProducts = res;
-          this.filteredProducts = res;
+        });
+      } else {
+        this.productService.getAllProducts().subscribe((res) => {
+          this.allProducts = res;
         });
       }
     });
   }
+  calculateCols() {
+    this.cols = ~~(window.innerWidth/400);
+  }
   redirectTo(id?: number) {
     if (id) {
-      this.router.navigate(['/location/' + id]);
+      
     } else {
       this.router.navigate(['/proposer'])
     }
+  }
+  get filteredProducts() {
+    return this.allProducts.filter(r => r.intitule?.toLowerCase().includes(this.filter.toLowerCase()) ||
+    r.description.toLowerCase().includes(this.filter.toLowerCase()));
   }
 }

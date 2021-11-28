@@ -19,6 +19,7 @@ export class ProposeProductComponent implements OnInit {
     tel: new FormControl(''),
     address: new FormControl(''),
     caution: new FormControl(''),
+    intitule: new FormControl(''),
     description: new FormControl(''),
     categories: new FormControl([]),
     photo: new FormControl('')
@@ -35,6 +36,7 @@ export class ProposeProductComponent implements OnInit {
         tel: this.userService.currentUser.tel,
         address: '',
         caution: '',
+        intitule: '',
         description: '',
         categories: [],
         photo: ''

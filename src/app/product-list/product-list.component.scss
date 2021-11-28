@@ -7,3 +7,24 @@
         background-color: rgba(255, 166, 0, 0.5);
     }
 }
+.product-card {
+    width: 300px;
+    max-width: 55vw;
+}
+mat-card-actions {
+    display: flex;
+    button {
+        flex: 1;
+    }
+}
+hr {
+    border: none;
+    border-top: 1px solid rgba(128, 128, 128, 0.5);
+    text-align: center;
+    color: rgba(128, 128, 128, 0.5);
+    height: 5px;
+    width: 100%;
+}
+.categorie {
+    color: rgba(128, 128, 128, 0.75);
+}

@@ -13,6 +13,8 @@ import { LoginComponent } from './login/login.component';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './services/http-interceptor';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { AuthInterceptor } from './services/http-interceptor';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    NgxSpinnerModule,
+    FormsModule
   ],
   providers: [NgxImageCompressService,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
