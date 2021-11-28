@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { CATEGORIES } from '../const';
+import { ProductService } from '../services/product.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-propose-product',
@@ -16,14 +19,27 @@ export class ProposeProductComponent implements OnInit {
     tel: new FormControl(''),
     address: new FormControl(''),
     caution: new FormControl(''),
-    categorie: new FormControl(''),
+    description: new FormControl(''),
+    categories: new FormControl([]),
     photo: new FormControl('')
   });
   localCompressedURl:any;
 
-  constructor(private imageCompress: NgxImageCompressService) { }
+  constructor(private imageCompress: NgxImageCompressService, private userService: UserService,
+              private productService: ProductService, private router: Router) { }
   
   ngOnInit(): void {
+    this.productForm.setValue(
+      {
+        name: this.userService.currentUser.name,
+        tel: this.userService.currentUser.tel,
+        address: '',
+        caution: '',
+        description: '',
+        categories: [],
+        photo: ''
+      }
+    );
   }
 
   selectFile(event: any) {
@@ -63,6 +79,13 @@ export class ProposeProductComponent implements OnInit {
     }
     const blob = new Blob([int8Array], { type: 'image/jpeg' });
     return blob;
+  }
+  submit() {
+    const product = this.productForm.value;
+    product.photo = this.localCompressedURl;
+    this.productService.createOrUpdateProduct(product).subscribe(() => {
+      this.router.navigate([`/location/categorie/${product.categorie}`]);
+    });
   }
 
 }

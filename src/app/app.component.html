@@ -16,9 +16,8 @@
         </button>
         <mat-menu #menu="matMenu">
           <button (click)="onClick('A PROPOS')" mat-menu-item>A propos</button>
-          <button (click)="onClick('CONNEXION')" mat-menu-item>Connexion</button>
-          <button (click)="onClick('INSCRIPTION')" mat-menu-item>Inscription</button>
-          <button (click)="onClick('DECONNEXION')" mat-menu-item>Déconnexion</button>
+          <button (click)="onClick('CONNEXION')" *ngIf="!userConnected" mat-menu-item>Connexion</button>
+          <button (click)="onClick('DECONNEXION')" *ngIf="userConnected" mat-menu-item>Déconnexion</button>
         </mat-menu>
       </mat-toolbar-row>
       <mat-toolbar-row>

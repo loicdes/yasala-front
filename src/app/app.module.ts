@@ -11,6 +11,8 @@ import { ProposeProductComponent } from './propose-product/propose-product.compo
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { LoginComponent } from './login/login.component';
 import { NgxImageCompressService } from 'ngx-image-compress';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './services/http-interceptor';
 
 @NgModule({
   declarations: [
@@ -25,9 +27,12 @@ import { NgxImageCompressService } from 'ngx-image-compress';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MaterialModule
   ],
-  providers: [NgxImageCompressService],
+  providers: [NgxImageCompressService,
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -28,3 +28,17 @@
     height: calc(100% - 100px);
   }
 }
+::ng-deep {
+  snack-bar-container {
+      &.error {
+          background-color: orange;
+      }
+      &.success {
+          background-color: green;
+      }
+      span {
+          color: white;
+          font-weight: bold;
+      }
+  }
+}

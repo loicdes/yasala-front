@@ -19,5 +19,6 @@ export class SidenavComponent implements OnInit {
 
   redirectTo(categorie: string) {
       this.router.navigate(['/location/categorie/' + categorie]);
+      this.sidenav.close();
   }
 }

@@ -4,6 +4,7 @@ import { LoginComponent } from './login/login.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProposeProductComponent } from './propose-product/propose-product.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -12,7 +13,8 @@ const routes: Routes = [
   },
   {
     path:'proposer',
-    component: ProposeProductComponent
+    component: ProposeProductComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path:'location',

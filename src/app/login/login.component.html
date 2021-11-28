@@ -17,7 +17,7 @@
             <mat-label>Confirmer le mot de passe</mat-label>
             <input required matInput formControlName="passwordConfirmation" type="password"/>
         </mat-form-field>
-        <button mat-button class="submit">{{ register ? 'S\'inscrire' : 'Se connecter'}}</button>
+        <button mat-button [disabled]="disabled" (click)="submit()" class="submit">{{ register ? 'S\'inscrire' : 'Se connecter'}}</button>
+        <button class="switch-form" mat-button (click)="register=!register">{{ register ? 'Vous avez déjà un compte ? Connectez-vous' : 'Vous n\'avez pas de compte ? Inscrivez-vous'}}</button>
     </form>
-    <button class="switch-form" mat-button (click)="register=!register">{{ register ? 'Vous avez déjà un compte ? Connectez-vous' : 'Vous n\'avez pas de compte ? Inscrivez-vous'}}</button>
 </div>

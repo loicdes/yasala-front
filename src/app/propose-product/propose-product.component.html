@@ -12,8 +12,12 @@
         <hr>
         <span>Le matériel</span>
         <mat-form-field>
-            <mat-label>Catégorie</mat-label>
-            <mat-select required formControlName="categorie">
+            <mat-label>Description</mat-label>
+            <input required matInput formControlName="description"/>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Catégories</mat-label>
+            <mat-select multiple required formControlName="categories">
                 <mat-option [value]="categorie" *ngFor="let categorie of categories">{{categorie}}</mat-option>
             </mat-select>
         </mat-form-field>
@@ -31,6 +35,6 @@
             <img [src]="localCompressedURl" height="150px" width="100%">
             <hr>
             
-        <button mat-button class="submit">Soumettre</button>
+        <button mat-button (click)="submit()" class="submit">Soumettre</button>
     </form>
 </div>
