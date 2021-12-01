@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductDetailsComponent } from '../product-details/product-details.component';
@@ -15,6 +15,7 @@ export class ProductListComponent implements OnInit {
   categorie: string;
   cols: number;
   filter: string = '';
+  private ratio = 1;
   constructor(private router: Router, private route: ActivatedRoute, private productService: ProductService,
               private dialog: MatDialog) { }
 

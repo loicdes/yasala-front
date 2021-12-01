@@ -86,7 +86,7 @@ export class ProposeProductComponent implements OnInit {
     const product = this.productForm.value;
     product.photo = this.localCompressedURl;
     this.productService.createOrUpdateProduct(product).subscribe(() => {
-      this.router.navigate([`/location/categorie/${product.categorie}`]);
+      this.router.navigate(['/location']);
     });
   }
 

@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  //API_ROUTE: 'http://localhost:5000',
-  API_ROUTE: 'https://yasala-back.herokuapp.com',
+  API_ROUTE: 'http://localhost:5000',
+  //API_ROUTE: 'https://yasala-back.herokuapp.com',
 };
 
 /*
