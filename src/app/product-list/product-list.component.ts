@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProductDetailsComponent } from '../product-details/product-details.component';
 import { ProductService } from '../services/product.service';
 
 @Component({
@@ -13,7 +15,8 @@ export class ProductListComponent implements OnInit {
   categorie: string;
   cols: number;
   filter: string = '';
-  constructor(private router: Router, private route: ActivatedRoute, private productService: ProductService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private productService: ProductService,
+              private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.calculateCols();
@@ -34,9 +37,12 @@ export class ProductListComponent implements OnInit {
   calculateCols() {
     this.cols = ~~(window.innerWidth/400);
   }
-  redirectTo(id?: number) {
-    if (id) {
-      
+  redirectTo(photo?: string) {
+    if (photo) {
+      this.dialog.open(ProductDetailsComponent,
+        {
+          data: photo
+        });
     } else {
       this.router.navigate(['/proposer'])
     }

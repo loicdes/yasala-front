@@ -9,13 +9,13 @@
     <p class="categorie" *ngIf="categorie">{{ categorie }}</p>
 </div>
 <mat-grid-list  class="product-list" [cols]="cols" >
-    <mat-grid-tile *ngFor="let product of filteredProducts" class="product" (click)="redirectTo(product._id)">
+    <mat-grid-tile *ngFor="let product of filteredProducts" class="product" (click)="redirectTo(product.photo)">
         <mat-card class="product-card">
             <mat-card-header>
               <mat-card-title>{{ product.intitule }}</mat-card-title>
               <mat-card-subtitle>{{ product.address }}</mat-card-subtitle>
             </mat-card-header>
-            <img mat-card-image src="{{ product.photo }}" alt="Photo de {{product.intitule}}">
+            <img mat-card-image class="image" src="{{ product.photo }}" alt="Photo de {{product.intitule}}">
             <mat-card-content>
               <p>
                 {{ product.description }}
